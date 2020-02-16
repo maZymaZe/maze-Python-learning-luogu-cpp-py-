@@ -1,0 +1,11 @@
+numbers=["1","2","3"]
+print(numbers)
+print(len(numbers))
+print(numbers[0])
+print(numbers[-1])
+numbers.append("4")
+print(numbers)
+numbers.insert(0,"0")
+print(numbers)
+numbers.pop(4)
+print(numbers)

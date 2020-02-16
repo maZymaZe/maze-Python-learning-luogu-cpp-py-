@@ -1,0 +1,7 @@
+f=open('G:\\program\learnpy\\file_test\\t.txt','r')
+str=f.read()
+print('hello,'+str)
+p=open('G:\\program\learnpy\\file_test\\p.txt','w')
+p.write('hello world')
+f.close()
+p.close()
