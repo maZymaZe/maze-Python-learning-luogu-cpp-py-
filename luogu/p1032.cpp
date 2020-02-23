@@ -9,7 +9,7 @@ int m=1,head,tail;
 struct pr{
 	int sp;
 	string ss;
-}l[2000000];
+}l[2300000];
 int main(){
 	cin>>oo>>tt;
 	while(cin>>ori[m]>>nx[m]){
