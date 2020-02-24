@@ -35,7 +35,7 @@ int main(){
 	t[1]=0;x[1]=bx;y[1]=by;fc[1]=face;
 	u[bx][by][face]=1;
 	while(head<=tail){
-		printf("%d %d %d        %d\n",x[head],y[head],t[head],fc[head]);
+		//printf("%d %d %d        %d\n",x[head],y[head],t[head],fc[head]);
 		if(x[head]+dx[fc[head]]*1<n&&x[head]+dx[fc[head]]*1>0)
 		if(y[head]+dy[fc[head]]*1<m&&y[head]+dy[fc[head]]*1>0)
 		if(u[x[head]+dx[fc[head]]*1][y[head]+dy[fc[head]]*1][fc[head]]==0)
