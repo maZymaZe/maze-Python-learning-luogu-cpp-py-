@@ -1,5 +1,5 @@
 #include<cstdio>
-int mp[1001][1001],ans[1001][1001],n,m,t1,t2,c,d=1,anns[1000001];
+int mp[1001][1001]={0},ans[1001][1001]={0},n,m,t1,t2,c,d=1,anns[1000001]={0};
 int dx[4]={0,0,1,-1},dy[4]={-1,1,0,0};
 void flood(int x,int y){
 	ans[x][y]=d;
@@ -24,7 +24,7 @@ int main(){
 			d++;
 		}
 	}
-	for(int i=1;i<=n;i++){
+	for(int i=1;i<=m;i++){
 		scanf("%d%d",&t1,&t2);
 		printf("%d\n",anns[ans[t1][t2]]);
 	}
