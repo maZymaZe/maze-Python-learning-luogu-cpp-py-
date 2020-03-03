@@ -7,6 +7,7 @@ int fx(int x){
     for(int i=0;i<l;i++){
         if(z[i]==h[x])return i;
     }
+    return 0;
 }
 void dfs(int l1,int r1,int l2,int r2){
     
