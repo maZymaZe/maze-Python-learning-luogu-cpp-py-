@@ -26,8 +26,8 @@ void work()
         long long p = prime[i];
         for (int x = (p - l % p) % p; x <= r - l; x += p)
         {
-            A[x] /= p, A[x] *= p - 1;
-            while (B[x] % p == 0)
+            A[x] /= p, A[x] *= p - 1;//对质因数进行埃氏筛的操作
+            while (B[x] % p == 0)//考虑一下有1个大质因数的情况
                 B[x] /= p;
         }
         i++;
@@ -46,7 +46,7 @@ int main()
     for (int i = 0; i <= r - l; i++)
     {
         if (B[i] != 1)
-            A[i] /= B[i], A[i] *= (B[i] - 1);
+            A[i] /= B[i], A[i] *= (B[i] - 1);//大质因数处理
         ans = (ans + i + l - A[i]) % MOD;
     }
     printf("%lld", ans);
