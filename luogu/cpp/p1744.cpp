@@ -42,18 +42,18 @@ int main() {
     for (int i = 1; i <= n; i++)
         d[i] = INF;
     d[s] = 0;
-    vis[s] = 1;
     q.push({s, 0});
     while (!q.empty()) {
         pr now = q.top();
         q.pop();
+        if (vis[now.id])
+            continue;
+        vis[now.id] = 1;
         for (int i = h[now.id]; i; i = e[i].nx) {
             if (d[now.id] + e[i].l < d[e[i].v]) {
                 d[e[i].v] = d[now.id] + e[i].l;
-                if (!vis[e[i].v]) {
-                    vis[e[i].v] = 1;
-                    q.push({e[i].v, d[e[i].v]});
-                }
+
+                q.push({e[i].v, d[e[i].v]});
             }
         }
     }
