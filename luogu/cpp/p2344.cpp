@@ -28,7 +28,7 @@ int main(){
     }
     sort(sumsort,sumsort+1+n);
     s=unique(sumsort,sumsort+1+n)-sumsort;
-    for(int i=0;i<=n;i++)sum[i]=lower_bound(sumsort,sumsort+1+n,sum[i])-sumsort+1;
+    for(int i=0;i<=n;i++)sum[i]=lower_bound(sumsort,sumsort+s,sum[i])-sumsort+1;
     add(sum[0],1);
     int ans=0;
     for(int i=1;i<=n;i++){
