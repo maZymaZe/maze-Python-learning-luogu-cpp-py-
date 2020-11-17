@@ -17,7 +17,8 @@
         "xstring": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "cstdlib": "cpp"
     }
     //"C_Cpp.errorSquiggles": "Disabled"
 }
