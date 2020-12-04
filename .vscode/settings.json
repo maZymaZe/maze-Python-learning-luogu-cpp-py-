@@ -19,7 +19,8 @@
         "xutility": "cpp",
         "initializer_list": "cpp",
         "cstdlib": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "xlocale": "cpp"
     }
     //"C_Cpp.errorSquiggles": "Disabled"
 }
