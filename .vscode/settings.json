@@ -23,7 +23,8 @@
         "xlocale": "cpp",
         "algorithm": "cpp",
         "limits": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "type_traits": "cpp"
     }
     //"C_Cpp.errorSquiggles": "Disabled"
 }
