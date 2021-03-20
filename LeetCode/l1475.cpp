@@ -6,16 +6,12 @@ public:
         int l=prices.size();
         vector<int> ans(l);
         s.push(0);
-        for(int i=1;i<l;i++){
-            while(!s.empty()&&prices[i]<=prices[s.top()]){
-                ans[s.top()]=prices[s.top()]-prices[i];
+        for(int i=l-1;i>=0;i--){
+            while(prices[i]<s.top()){
                 s.pop();
             }
-            s.push(i);
-        }
-        while(!s.empty()){
-            ans[s.top()]=prices[s.top()];
-            s.pop();
+            ans[i]=prices[i]-s.top();
+            s.push(prices[i]);
         }
         return ans;
 
