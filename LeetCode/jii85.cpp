@@ -1,17 +1,26 @@
 class Solution {
    public:
-    int findPoisonedDuration(vector<int>& timeSeries, int duration) {
-        int ans = 0, l = -1, r = -2, len = timeSeries.size();
-        sort(timeSeries.begin(), timeSeries.end());
-        for (int i = 0; i < len; i++) {
-            if (timeSeries[i] > r) {
-                ans += r - l + 1;
-                l = timeSeries[i], r = timeSeries[i] + duration - 1;
-            } else {
-                r = timeSeries[i] + duration - 1;
-            }
+    vector<string> ans;
+    int lim;
+    string str;
+    void dfs(int pos, int s) {
+        if (pos == lim) {
+            if (s == 0)
+                ans.push_back(str);
+            return;
         }
-        ans += r - l + 1;
+        if (s) {
+            str.push_back(')');
+            dfs(pos + 1, s - 1);
+            str.pop_back();
+        }
+        str.push_back('(');
+        dfs(pos + 1, s + 1);
+        str.pop_back();
+    }
+    vector<string> generateParenthesis(int n) {
+        lim = 2 * n;
+        dfs(0, 0);
         return ans;
     }
 };
