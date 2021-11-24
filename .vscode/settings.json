@@ -2,6 +2,7 @@
     "files.associations": {
         "*.cpp": "cpp",
         "*.svh": "systemverilog",
+        "*.html": "html",
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp",
@@ -58,7 +59,9 @@
         "xmemory": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "clocale": "cpp",
+        "functional": "cpp"
     }
     //"C_Cpp.errorSquiggles": "Disabled"
 }
