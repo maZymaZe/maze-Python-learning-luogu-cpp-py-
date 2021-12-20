@@ -1,10 +1,10 @@
 class Solution {
    public:
     bool canPermutePalindrome(string s) {
-        int c[26] = {0}, d = 0;
+        int c[260] = {0}, d = 0;
         for (char x : s)
-            c[x - 'a']++;
-        for (int i = 0; i < 26; i++)
+            c[x]++;
+        for (int i = 0; i < 260; i++)
             if (c[i] & 1)
                 d++;
         return d < 2;
