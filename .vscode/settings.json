@@ -61,7 +61,8 @@
         "xtr1common": "cpp",
         "bit": "cpp",
         "clocale": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "random": "cpp"
     }
     //"C_Cpp.errorSquiggles": "Disabled"
 }
