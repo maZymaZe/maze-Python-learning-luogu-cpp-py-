@@ -1,60 +1,58 @@
+const vector<int> d = {0, -1, 0, 1, 0};
+
 class Solution {
-public:
-    int n,m,cnt=0;
-    int used[51][51],dx[4]={0,0,1,-1},dy[4]={1,-1,0,0},gp[51][51],p=0,uu[2501];
-    void cunt(vector<vector<int>>&grid,int x,int y){
-        cnt++;
-        used[x][y]=1;
-        for(int i=0;i<4;i++){
-            int nx=x+dx[i],ny=y+dy[i];
-            if(nx>=0&&ny>=0&&nx<n&&ny<m&&!used[nx][ny]&&grid[nx][ny]){
-                cunt(grid,nx,ny);
+   public:
+    bool valid(int n, int x, int y) {
+        return x >= 0 && x < n && y >= 0 && y < n;
+    }
+
+    int dfs(const vector<vector<int>>& grid,
+            int x,
+            int y,
+            vector<vector<int>>& tag,
+            int t) {
+        int n = grid.size(), res = 1;
+        tag[x][y] = t;
+        for (int i = 0; i < 4; i++) {
+            int x1 = x + d[i], y1 = y + d[i + 1];
+            if (valid(n, x1, y1) && grid[x1][y1] == 1 && tag[x1][y1] == 0) {
+                res += dfs(grid, x1, y1, tag, t);
             }
         }
+        return res;
     }
-    void fll(vector<vector<int>>&grid,int x,int y){
-        grid[x][y] =cnt;
-        gp[x][y]=p;
-        used[x][y]=1;
-        for(int i=0;i<4;i++){
-            int nx=x+dx[i],ny=y+dy[i];
-            if(nx>=0&&ny>=0&&nx<n&&ny<m&&!used[nx][ny]&&grid[nx][ny]){
-                fll(grid,nx,ny);
-            }
-        }
-    }
+
     int largestIsland(vector<vector<int>>& grid) {
-        n=grid.size(),m=grid[0].size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(grid[i][j]){
-                    cnt=0;p++;
-                    memset(used,0,sizeof(used));
-                    cunt(grid,i,j);
-                    memset(used,0,sizeof(used));
-                    fll(grid,i,j);
+        int n = grid.size(), res = 0;
+        vector<vector<int>> tag(n, vector<int>(n));
+        unordered_map<int, int> area;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1 && tag[i][j] == 0) {
+                    int t = i * n + j + 1;
+                    area[t] = dfs(grid, i, j, tag, t);
+                    res = max(res, area[t]);
                 }
             }
         }
-        int ans=0,f=0;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(!grid[i][j]){
-                   f=1;
-                   int c=1;
-                   if(i-1>=0&&!uu[gp[i-1][j]])c+=grid[i-1][j],uu[gp[i-1][j]]=1;
-                   if(j-1>=0&&!uu[gp[i][j-1]])c+=grid[i][j-1],uu[gp[i][j-1]]=1;
-                   if(i+1<n&&!uu[gp[i+1][j]])c+=grid[i+1][j],uu[gp[i+1][j]]=1;
-                   if(j+1<m&&!uu[gp[i][j+1]])c+=grid[i][j+1],uu[gp[i][j+1]]=1;
-                   ans=max(ans,c);
-                   if(i-1>=0)uu[gp[i-1][j]]=0;
-                   if(j-1>=0)uu[gp[i][j-1]]=0;
-                   if(i+1<n)uu[gp[i+1][j]]=0;
-                   if(j+1<m)uu[gp[i][j+1]]=0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 0) {
+                    int z = 1;
+                    unordered_set<int> connected;
+                    for (int k = 0; k < 4; k++) {
+                        int x = i + d[k], y = j + d[k + 1];
+                        if (!valid(n, x, y) || tag[x][y] == 0 ||
+                            connected.count(tag[x][y]) > 0) {
+                            continue;
+                        }
+                        z += area[tag[x][y]];
+                        connected.insert(tag[x][y]);
+                    }
+                    res = max(res, z);
                 }
             }
         }
-        if(!f)return n*m;
-        return ans;
+        return res;
     }
 };
