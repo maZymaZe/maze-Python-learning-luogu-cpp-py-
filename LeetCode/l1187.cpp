@@ -1,6 +1,3 @@
-#include <algorithm>
-#include <vector>
-using namespace std;
 class Solution {
    public:
     int makeArrayIncreasing(vector<int>& arr1, vector<int>& arr2) {
@@ -21,11 +18,7 @@ class Solution {
                     mop = min(mop, op[old][j]);
                 auto it = upper_bound(arr2.begin(), arr2.end(), v[old][j]);
                 if (it == arr2.end()) {
-                    if (uflag) {
-                        v[nw].push_back(arr1[i]), op[nw].push_back(mop);
-                        uflag = 0;
-                    }
-                    break;
+                    continue;
                 } else {
                     if ((*it) < arr1[i] &&
                         (op[nw].empty() || op[old][j] + 1 < op[nw].back())) {
@@ -55,7 +48,3 @@ class Solution {
         return op[(l - 1) & 1].back();
     }
 };
-int main() {
-    vector<int> a{1, 5, 3, 6, 7}, b{1, 3, 2, 4};
-    Solution().makeArrayIncreasing(a, b);
-}
