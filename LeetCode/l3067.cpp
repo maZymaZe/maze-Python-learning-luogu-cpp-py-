@@ -1,5 +1,3 @@
-#include <vector>
-using namespace std;
 class Solution {
    public:
     vector<vector<int>> e;
@@ -44,8 +42,3 @@ class Solution {
         return ans;
     }
 };
-int main() {
-    vector<int> e1{0, 1, 1}, e2{1, 2, 3};
-    vector<vector<int>> e{e1, e2};
-    Solution().countPairsOfConnectableServers(e, 1);
-}
